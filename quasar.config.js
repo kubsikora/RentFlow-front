@@ -51,7 +51,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node20'
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -60,7 +60,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+        env: {
+			VITE_APP_API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000'
+		  },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
