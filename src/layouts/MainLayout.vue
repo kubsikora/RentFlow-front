@@ -106,7 +106,7 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
-<style>
+<style scoped>
 .toolbar {
   color: rgb(116, 166, 225);
   background-color: rgb(255, 255, 255);

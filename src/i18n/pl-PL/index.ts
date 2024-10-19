@@ -1,6 +1,10 @@
 export default {
+  name: 'RentFlow',
+  next: 'Dalej',
   failed: 'fdfs',
   success: 'fdsf',
+  signup: 'Stwórz konto',
+  login: 'Zaloguj się',
   menu: {
     dashbord: 'Panel Startowy',
     messeges: 'Wiadomości',
@@ -12,5 +16,45 @@ export default {
   },
   counter: {
     deadline: 'Podaj liczniki do',
+  },
+  welcome: {
+    description:
+      'Nasza aplikacja automatycznie obliczy należności za media na podstawie wprowadzanych stanów liczników. Oszczędź czas, uniknij pomyłek i miej pewność, że najemcy otrzymują przypomnienia o terminach płatności. Wszystko w jednym miejscu.',
+    motto: 'szybciej, łatwiej, bez stresu!',
+    graph:
+      'Automatyczne obliczenia za media, szybkie i dokładne rozliczenia na podstawie wprowadzonych odczytów liczników. ',
+    mail: 'Twoi najemcy zawsze będą na bieżąco z płatnościami dzięki wbudowanym przypomnieniom — zarówno wewnętrznym, jak i e-mailowym.',
+  },
+  log: {
+    log: 'Login',
+    password: 'Hasło',
+    login: 'Zaloguj się',
+    signup: 'Załóż nowe konto',
+    or: 'lub',
+  },
+  sign: {
+    basic_data: 'Dane Podstawowe',
+    address_data: 'Adres Zamieszkania',
+    log: 'Login',
+    tel: 'Telefon',
+    password: 'Hasło',
+    create: 'Stwórz konto',
+    mail: 'Email',
+    password_again: 'Ponownie ponownie hasło',
+    name: 'Imie',
+    surname: 'Nazwisko',
+    birth: 'Data urodzenia',
+    day: 'Dzień',
+    month: 'Miesiąc',
+    year: 'Rok',
+    done: 'Gratulacje, udało nam się utworzyć dla ciebie konto.',
+  },
+  address: {
+    country: 'Kraj zamieszkania',
+    postalcode: 'Kod pocztowy',
+    city: 'Miasto',
+    street: 'Ulica',
+    house_number: 'numer domu',
+    flat_number: 'numer mieszkania',
   },
 };

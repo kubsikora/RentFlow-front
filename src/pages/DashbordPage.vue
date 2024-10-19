@@ -6,7 +6,7 @@
     </div>
     <div class="card2">
       <p>{{ $t('messages.new') }}</p>
-      <p style="color: black">//todo idk co tu</p>
+      <!-- <p style="color: black">//todo idk co tu</p> -->
     </div>
     <div class="card3" :style="{ backgroundColor: getColor(Count) }">
       <p>{{ $t('messages.new') }}</p>
@@ -14,9 +14,9 @@
     </div>
   </q-banner>
 
-  <p style="color: black">//pa jaki kozak</p>
+  <!-- <p style="color: black">//pa jaki kozak</p>
   <q-btn @click="Count = Count + 1">+1</q-btn>
-  <q-btn @click="Count = Count - 1">-1</q-btn>
+  <q-btn @click="Count = Count - 1">-1</q-btn> -->
 </template>
 
 <script setup lang="ts">
@@ -39,7 +39,7 @@ watch(Count, () => {
   }
 });
 </script>
-<style>
+<style scoped>
 .banner {
   -webkit-box-shadow: 0px 0px 9px -7px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 0px 9px -7px rgba(66, 68, 90, 1);
