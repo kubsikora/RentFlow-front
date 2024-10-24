@@ -81,7 +81,7 @@ const linksList: EssentialLinkProps[] = [
   {
     title: i18n.t('menu.dashbord'),
     icon: 'widgets',
-    to: '/',
+    to: '/home',
   },
   {
     title: i18n.t('menu.messeges'),
