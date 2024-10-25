@@ -20,10 +20,12 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
 import { ref, watch } from 'vue';
 
 const Count = ref(0);
 const date = ref('27.10.2024');
+await axios.get('http://localhost:8000/test');
 
 const getColor = (value: number) => {
   const redIntensity = Math.min(255, value * 25);

@@ -38,7 +38,17 @@
     </q-drawer>
 
     <q-page-container>
-      <q-layout style="padding: 50px">
+      <q-layout
+        style="
+          padding: 50px;
+          background: rgb(188, 174, 225);
+          background: linear-gradient(
+            0deg,
+            rgba(188, 174, 225, 1) 0%,
+            rgba(255, 255, 255, 1) 80%
+          );
+        "
+      >
         <q-page-container>
           <router-view />
         </q-page-container>
