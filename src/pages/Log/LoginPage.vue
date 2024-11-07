@@ -58,14 +58,20 @@
 </template>
 
 <script setup lang="ts">
+import { useQuasar } from 'quasar';
+import { api } from 'src/boot/axios';
 import ToolbarComponent from 'src/components/ToolbarComponent.vue';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const login = ref('');
 const password = ref('');
 const passwordVisible = ref(false);
+const $q = useQuasar();
+const i18n = useI18n();
+
 
 const togglePasswordVisibility = () => {
   passwordVisible.value = !passwordVisible.value;
@@ -74,8 +80,30 @@ const togglePasswordVisibility = () => {
 const signup = () => {
   router.push('/sign-up');
 };
-const loginSetup = () => {
-  router.push('/home');
+
+const loginSetup = async () => {
+  try{
+    const response = await api.get(`/user/login/login=${login.value}&password=${password.value}`);
+
+    if (response.data) {
+      $q.notify({
+        type: 'positive',
+        message: i18n.t('success'),
+      });
+      router.push('/home');
+    } else {
+      $q.notify({
+        type: 'negative',
+        message: i18n.t('failed'),
+      });
+    }
+  } catch (error) {
+    console.error('Save data error:', error);
+    $q.notify({
+      type: 'negative',
+      message: i18n.t('error.server_error'),
+    });
+  }
 };
 </script>
 

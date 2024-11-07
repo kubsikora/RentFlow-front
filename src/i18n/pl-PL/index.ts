@@ -1,8 +1,8 @@
 export default {
   name: 'RentFlow',
   next: 'Dalej',
-  failed: 'fdfs',
-  success: 'fdsf',
+  failed: 'Coś poszło nie tak',
+  success: 'Udało się',
   signup: 'Stwórz konto',
   login: 'Zaloguj się',
   menu: {
@@ -33,8 +33,9 @@ export default {
     or: 'lub',
   },
   sign: {
+    saving_data: 'Twoje dane są już zapisywane',
     basic_data: 'Dane Podstawowe',
-    address_data: 'Adres Zamieszkania',
+    address_data: 'Adres wynajmowanego miejsca',
     log: 'Login',
     tel: 'Telefon',
     password: 'Hasło',
@@ -48,13 +49,19 @@ export default {
     month: 'Miesiąc',
     year: 'Rok',
     done: 'Gratulacje, udało nam się utworzyć dla ciebie konto.',
+    pass: 'Stwórz swój login i hasło',
   },
   address: {
+    rooms: 'Ilość pokoi',
     country: 'Kraj zamieszkania',
     postalcode: 'Kod pocztowy',
     city: 'Miasto',
     street: 'Ulica',
     house_number: 'numer domu',
     flat_number: 'numer mieszkania',
+  },
+  error: {
+    index: 'Prosze uzupełnić poprawnie wszytkie dane',
+    user_used: 'Niestety ten login jest już zajęty.',
   },
 };
