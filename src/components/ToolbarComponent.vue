@@ -8,6 +8,14 @@
         v-if="signButton"
         flat
         size="15px"
+        :label="$t('signupnormal')"
+        class="btn q-mr-md"
+        @click="signupnormal"
+      />
+      <q-btn
+        v-if="signButton"
+        flat
+        size="15px"
         :label="$t('signup')"
         class="btn q-mr-md"
         @click="signup"
@@ -57,6 +65,11 @@ const backtowelcome = () => {
 const signup = () => {
   router.push('/sign-up');
 };
+
+const signupnormal = () => {
+  router.push('/sign-up-user');
+};
+
 </script>
 <style scoped>
 .toolbar {

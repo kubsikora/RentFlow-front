@@ -1,18 +1,20 @@
 <template>
-  <q-banner class="banner">
-    <div class="card1">
-      <p>{{ $t('counter.deadline') }}</p>
-      <h4>{{ date }}</h4>
-    </div>
-    <div class="card2">
-      <p>{{ $t('messages.new') }}</p>
-      <!-- <p style="color: black">//todo idk co tu</p> -->
-    </div>
-    <div class="card3" :style="{ backgroundColor: getColor(Count) }">
-      <p>{{ $t('messages.new') }}</p>
-      <h1 style="margin-top: 30px">{{ Count }}</h1>
-    </div>
-  </q-banner>
+  <div v-if="owner">
+    <q-banner class="banner">
+      <div class="card1">
+        <p>{{ $t('counter.deadline') }}</p>
+        <h4>{{ date }}</h4>
+      </div>
+      <div class="card2">
+        <p>{{ $t('messages.new') }}</p>
+        <!-- <p style="color: black">//todo idk co tu</p> -->
+      </div>
+      <div class="card3" :style="{ backgroundColor: getColor(Count) }">
+        <p>{{ $t('messages.new') }}</p>
+        <h1 style="margin-top: 30px">{{ Count }}</h1>
+      </div>
+    </q-banner>
+  </div>
 
   <!-- <p style="color: black">//pa jaki kozak</p>
   <q-btn @click="Count = Count + 1">+1</q-btn>
@@ -21,6 +23,9 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { CheckIfOwner } from 'src/utils/CheckIfOwner';
+
+const owner = CheckIfOwner();
 
 const Count = ref(0);
 const date = ref('27.10.2024');

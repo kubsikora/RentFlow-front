@@ -21,6 +21,18 @@ const routes: RouteRecordRaw[] = [
         path: '/counter-readings',
         component: () => import('pages/CounterPage.vue'),
       },
+      {
+        path: '/configuration/residents',
+        component: () => import('pages/Configuration/ResidentsPage.vue'),
+      },
+      {
+        path: '/configuration/flats',
+        component: () => import('pages/Configuration/FlatsPage.vue'),
+      },
+      {
+        path: '/configuration/account',
+        component: () => import('pages/Configuration/AccountPage.vue'),
+      },
     ],
   },
   {
@@ -30,6 +42,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/sign-up',
     component: () => import('pages/Log/SignUpPage.vue'),
+  },
+  {
+    path: '/sign-up-user',
+    component: () => import('pages/Log/SignUpPageNormal.vue'),
   },
   {
     path: '',

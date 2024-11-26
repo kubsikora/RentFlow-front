@@ -51,6 +51,16 @@
               border-radius: 8px;
             "
           />
+          <q-btn
+            :label="$t('log.signupnormal')"
+            @click="signupnormal"
+            style="
+              background-color: rgb(116, 166, 225);
+              margin-top: 10px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          />
         </div>
       </q-card>
     </q-img>
@@ -80,6 +90,9 @@ const togglePasswordVisibility = () => {
 const signup = () => {
   router.push('/sign-up');
 };
+const signupnormal = () => {
+  router.push('/sign-up-user');
+};
 
 const loginSetup = async () => {
   try{
@@ -90,6 +103,7 @@ const loginSetup = async () => {
         type: 'positive',
         message: i18n.t('success'),
       });
+      localStorage.setItem('user', JSON.stringify(response.data));
       router.push('/home');
     } else {
       $q.notify({

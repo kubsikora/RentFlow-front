@@ -11,6 +11,7 @@
           @click="toggleLeftDrawer"
         />
         <q-toolbar-title> RentFlow </q-toolbar-title>
+        <h8 style="margin-right: 50px; font-size: 18px;">{{ name }}</h8>
         <q-btn flat size="20px" icon="logout" class="q-mr-xl" @click="logout" />
         <!-- <q-icon size="30px" name="language" class="q-mr-xs" /> -->
         <!-- <div>
@@ -64,11 +65,13 @@ import EssentialLink, {
   EssentialLinkProps,
 } from 'components/EssentialLink.vue';
 import { useRouter } from 'vue-router';
+import { UserFullName } from 'src/utils/UserFullName';
 
 defineOptions({
   name: 'MainLayout',
 });
 
+const name = UserFullName();
 // const { locale } = useI18n();
 const router = useRouter();
 const i18n = useI18n();
@@ -85,6 +88,7 @@ const i18n = useI18n();
 
 const logout = () => {
   router.push('/login');
+  localStorage.removeItem('user');
 };
 
 const linksList: EssentialLinkProps[] = [
@@ -92,21 +96,50 @@ const linksList: EssentialLinkProps[] = [
     title: i18n.t('menu.dashbord'),
     icon: 'widgets',
     to: '/home',
+    owner: 2,
   },
   {
     title: i18n.t('menu.messeges'),
     icon: 'chat',
     to: '/messeges',
+    owner: 2,
   },
   {
     title: i18n.t('menu.stats'),
     icon: 'equalizer',
     to: '/stats',
+    owner: 2,
   },
   {
     title: i18n.t('menu.counter'),
     icon: 'flash_on',
     to: '/counter-readings',
+    owner: 2,
+  },
+  {
+    title: i18n.t('menu.configuration'),
+    icon: 'settings',
+    owner: 2,
+    children: [
+      {
+        title: i18n.t('menu.residents'),
+        icon: 'people',
+        to: '/configuration/residents',
+        owner: 1,
+      },
+      {
+        title: i18n.t('menu.flats'),
+        icon: 'apartment',
+        to: '/configuration/flats',
+        owner: 1,
+      },
+      {
+        title: i18n.t('menu.account'),
+        icon: 'apartment',
+        to: '/configuration/account',
+        owner: 2,
+      },
+    ],
   },
 ];
 
