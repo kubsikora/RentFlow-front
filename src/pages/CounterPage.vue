@@ -1,3 +1,4 @@
+
 <template>
   <div class="q-pa-md">
     <div style="max-width: 100%">
@@ -23,31 +24,60 @@
           class="bg-grey text-white text-center"
         >
         <q-tab-panel name="energy" class="q-tab2">
-            <div class="text-h6">Ostatni stan licznika energii elektrycznej</div>
             <div class="center-wrapper">
               <div class="pole-panel">
                 <div class="panel1">
                   <p>Data ostatniego odczytu:</p>
-                  <h1 style="margin-top: 30px">{{ energyReadDate }}</h1>
+                  <h4 style="margin-top: 2cqb">{{ energyReadDate }}</h4>
                 </div>
                 <div class="panel2">
                   <p>Wartość ostatniego odczytu</p>
-                  <h1 style="margin-top: 30px">{{ energyState }} kWh</h1>
+                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
                 </div>
               </div>
             </div>
           </q-tab-panel>
           <q-tab-panel name="water" class="q-tab1">
-            <div class="text-h6">Ostatni odczyt wodomierza</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+              <div class="pole-panel">
+                <div class="panel1">
+                  <p>Data ostatniego odczytu:</p>
+                  <h4 style="margin-top: 2cqb">{{ energyReadDate }}</h4>
+                </div>
+                <div class="panel2">
+                  <p>Wartość ostatniego odczytu</p>
+                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                </div>
+              </div>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="gas" class="q-tab1">
-            <div class="text-h6">Ostatni odczyt licznika gazu</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+              <div class="pole-panel">
+                <div class="panel1">
+                  <p>Data ostatniego odczytu:</p>
+                  <h4 style="margin-top: 2cqb">{{ energyReadDate }}</h4>
+                </div>
+                <div class="panel2">
+                  <p>Wartość ostatniego odczytu</p>
+                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                </div>
+              </div>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="heat" class="q-tab1">
-            <div class="text-h6">Ostatni odczyt ciepłomierza</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+              <div class="pole-panel">
+                <div class="panel1">
+                  <p>Data ostatniego odczytu:</p>
+                  <h4 style="margin-top: 2cqb">{{ energyReadDate }}</h4>
+                </div>
+                <div class="panel2">
+                  <p>Wartość ostatniego odczytu</p>
+                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                </div>
+              </div>
+            </div>
           </q-tab-panel>
 
         </q-tab-panels>
@@ -59,28 +89,23 @@
           class="bg-pink text-white text-center"
         >
         <q-tab-panel name="energy" class="q-tab2">
-  <div class="text-h6">Podaj nowy stan licznika energii elektrycznej</div>
   <div class="center-wrapper">
     <div class="pole-panel">
       <div class="panel1">
         <p>Data odczytu</p>
         <q-date
         v-model="date"
-        color="orange"
+        color="grey"
         text-color="black"
         dark
-        bordered
+        landscape
       />
       </div>
       <div class="panel2">
         <p>Stan licznika</p>
-        <div class="q-pa-md">
-    <q-input
-      v-model.number="model"
-      type="number"
-      filled
-      style="max-width: 200px"
-    />
+        <div class="q-pa-md" style="color: white;">
+          <input type="number" style="background-color: rgba(0, 0, 0, 0.0); text-decoration: none; border: 0px; color: white; font-size: 40px; border-radius: 15px;text-align: center; height: 250px;" value="200000">
+
   </div>
       </div>
     </div>
@@ -88,16 +113,73 @@
 </q-tab-panel>
 
           <q-tab-panel name="water" class="q-tab2">
-            <div class="text-h6">Podaj nowy stan wodomierza</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+    <div class="pole-panel">
+      <div class="panel1">
+        <p>Data odczytu</p>
+        <q-date
+        v-model="date"
+        color="grey"
+        text-color="black"
+        dark
+        landscape
+      />
+      </div>
+      <div class="panel2">
+        <p>Stan licznika</p>
+        <div class="q-pa-md" style="color: white;">
+          <input type="number" style="background-color: rgba(0, 0, 0, 0.0); text-decoration: none; border: 0px; color: white; font-size: 40px; border-radius: 15px;text-align: center; height: 250px;" value="200000">
+
+  </div>
+      </div>
+    </div>
+  </div>
           </q-tab-panel>
           <q-tab-panel name="gas" class="q-tab2">
-            <div class="text-h6">Podaj nowy stan licznika gazu</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+    <div class="pole-panel">
+      <div class="panel1">
+        <p>Data odczytu</p>
+        <q-date
+        v-model="date"
+        color="grey"
+        text-color="black"
+        dark
+        landscape
+      />
+      </div>
+      <div class="panel2">
+        <p>Stan licznika</p>
+        <div class="q-pa-md" style="color: white;">
+          <input type="number" style="background-color: rgba(0, 0, 0, 0.0); text-decoration: none; border: 0px; color: white; font-size: 40px; border-radius: 15px;text-align: center; height: 250px;" value="200000">
+
+  </div>
+      </div>
+    </div>
+  </div>
           </q-tab-panel>
           <q-tab-panel name="heat" class="q-tab2">
-            <div class="text-h6">Podaj nowy stan ciepłomierza</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="center-wrapper">
+    <div class="pole-panel">
+      <div class="panel1">
+        <p>Data odczytu</p>
+        <q-date
+        v-model="date"
+        color="grey"
+        text-color="black"
+        dark
+        landscape
+      />
+      </div>
+      <div class="panel2">
+        <p>Stan licznika</p>
+        <div class="q-pa-md" style="color: white;">
+          <input type="number" style="background-color: rgba(0, 0, 0, 0.0); text-decoration: none; border: 0px; color: white; font-size: 40px; border-radius: 15px;text-align: center; height: 250px;" value="200000">
+
+  </div>
+      </div>
+    </div>
+  </div>
           </q-tab-panel>
 
         </q-tab-panels>
@@ -110,20 +192,126 @@
           class="bg-orange text-white text-center"
         >
           <q-tab-panel name="energy" class="q-tab3">
-            <div class="text-h6">Twoja analiza zużycia energii elektrycznej</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Średnie zużycie dobowe</p>
+                                <h6> {{ energyAverageConsumption }} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Wzrost zużycia poprzedni okres</p>
+                                <h6>{{ energyIncrease }} %</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-1">Średni koszt miesiąc</p>
+                                <h6>{{ energyAverageCost }} zł</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="water" class="q-tab3">
-            <div class="text-h6">Twoja analiza zużycia wody</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Średnie zużycie dobowe</p>
+                                <h6> {{ energyAverageConsumption }} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Wzrost zużycia poprzedni okres</p>
+                                <h6>{{ energyIncrease }} %</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-1">Średni koszt miesiąc</p>
+                                <h6>{{ energyAverageCost }} zł</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="gas" class="q-tab3">
-            <div class="text-h6">Twoja analiza zużycia gazu</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Średnie zużycie dobowe</p>
+                                <h6> {{ energyAverageConsumption }} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Wzrost zużycia poprzedni okres</p>
+                                <h6>{{ energyIncrease }} %</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-1">Średni koszt miesiąc</p>
+                                <h6>{{ energyAverageCost }} zł</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="heat" class="q-tab3">
-            <div class="text-h6">Twoja analiza zyżycia energi cieplnej</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Średnie zużycie dobowe</p>
+                                <h6> {{ energyAverageConsumption }} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-2">Wzrost zużycia poprzedni okres</p>
+                                <h6>{{ energyIncrease }} %</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="rounded d-flex align-items-center justify-content-between p-4">
+                            <div class="ms-3">
+                                <p class="mb-1">Średni koszt miesiąc</p>
+                                <h6>{{ energyAverageCost }} zł</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </q-tab-panel>
 
         </q-tab-panels>
@@ -143,6 +331,9 @@ export default {
       model: ref(10),
       energyReadDate: ref('21.11.2023'),
       energyState: ref(201023),
+      energyAverageConsumption: ref(245),
+      energyIncrease: ref(24),
+      energyAverageCost: ref(321),
       date: ref('2024/01/01')
     }
   }
@@ -182,11 +373,14 @@ export default {
 
 .panel1, .panel2 {
   width: 50%; /* Divides space equally */
-  padding: 10px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+
 }
 
 .panel1 {
-  background-color: rgba(66, 68, 90, 0.4);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 16px 0px 0px 16px;
 }
 
