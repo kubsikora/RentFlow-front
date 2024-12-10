@@ -22,7 +22,7 @@ export interface AddressData {
   street: string;
   zipcode: string;
   city: string;
-  place_area: number | null,
+  place_area: number | null;
   house_number: number | null;
   flat_number: number | null;
 }
@@ -74,4 +74,32 @@ export function defaultSignupData(): SignupData {
       password: '',
     },
   };
+}
+
+export class AccountSettings {
+  id: number;
+  email: string;
+  phone: string;
+  passwordold: string;
+  passwordnew: string;
+  delete: boolean;
+
+  constructor(id: number) {
+    this.id = id;
+    this.email = '';
+    this.phone = '';
+    this.passwordold = '';
+    this.passwordnew = '';
+    this.delete = false;
+  }
+}
+
+export class DeleAccount {
+  id: number;
+  password: string;
+
+  constructor(id: number) {
+    this.id = id;
+    this.password = '';
+  }
 }
