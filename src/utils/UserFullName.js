@@ -6,15 +6,15 @@ import { ref } from 'vue';
  */
 
 export function UserFullName() {
-    const user = ref([]);
-    const name = ref('');
+  const user = ref([]);
+  const name = ref('');
 
-    const userData = localStorage.getItem('user');
+  const userData = localStorage.getItem('user');
 
-    if (userData) {
-        user.value.push(JSON.parse(userData));
-        name.value = user.value[0]['name'] + ' ' + user.value[0]['surname'];
-    }
+  if (userData) {
+    user.value.push(JSON.parse(userData));
+    name.value = user.value[0]['name'] + ' ' + user.value[0]['surname'];
+  }
 
-    return name;
+  return name;
 }

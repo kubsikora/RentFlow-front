@@ -22,7 +22,7 @@ export interface AddressData {
   street: string;
   zipcode: string;
   city: string;
-  place_area: number | null,
+  place_area: number | null;
   house_number: number | null;
   flat_number: number | null;
 }

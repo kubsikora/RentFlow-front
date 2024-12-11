@@ -1,11 +1,4 @@
-<template>
-    Residents
-  </template>
-  
-  <script setup lang="ts">
+<template>Residents</template>
 
-  </script>
-  <style scoped>
-
-  </style>
-  
+<script setup lang="ts"></script>
+<style scoped></style>

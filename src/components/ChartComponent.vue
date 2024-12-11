@@ -13,8 +13,8 @@ Chart.register(...registerables);
 
 // Define props for the component
 const props = defineProps<{
-  labels: string[];  // Array of labels for the chart
-  data: number[];    // Array of data points
+  labels: string[]; // Array of labels for the chart
+  data: number[]; // Array of data points
 }>();
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
@@ -47,11 +47,11 @@ function renderChart() {
   chartInstance.value = new Chart(ctx, {
     type: 'bar', // Change to 'line', 'pie', etc., as needed
     data: {
-      labels: props.labels,  // Use dynamic labels
+      labels: props.labels, // Use dynamic labels
       datasets: [
         {
           label: 'Dynamic Data',
-          data: props.data,  // Use dynamic data
+          data: props.data, // Use dynamic data
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1,

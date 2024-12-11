@@ -69,7 +69,6 @@ const signup = () => {
 const signupnormal = () => {
   router.push('/sign-up-user');
 };
-
 </script>
 <style scoped>
 .toolbar {

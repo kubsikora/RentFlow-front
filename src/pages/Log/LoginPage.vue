@@ -82,7 +82,6 @@ const passwordVisible = ref(false);
 const $q = useQuasar();
 const i18n = useI18n();
 
-
 const togglePasswordVisibility = () => {
   passwordVisible.value = !passwordVisible.value;
 };
@@ -95,8 +94,10 @@ const signupnormal = () => {
 };
 
 const loginSetup = async () => {
-  try{
-    const response = await api.get(`/user/login/login=${login.value}&password=${password.value}`);
+  try {
+    const response = await api.get(
+      `/user/login/login=${login.value}&password=${password.value}`
+    );
 
     if (response.data) {
       $q.notify({

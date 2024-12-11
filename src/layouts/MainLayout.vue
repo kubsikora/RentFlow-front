@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
         <q-toolbar-title> RentFlow </q-toolbar-title>
-        <h8 style="margin-right: 50px; font-size: 18px;">{{ name }}</h8>
+        <h8 style="margin-right: 50px; font-size: 18px">{{ name }}</h8>
         <q-btn flat size="20px" icon="logout" class="q-mr-xl" @click="logout" />
         <!-- <q-icon size="30px" name="language" class="q-mr-xs" /> -->
         <!-- <div>
