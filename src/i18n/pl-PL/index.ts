@@ -47,7 +47,7 @@ export default {
     password: 'Hasło',
     create: 'Stwórz konto',
     mail: 'Email',
-    password_again: 'Ponownie ponownie hasło',
+    password_again: 'Powtórz hasło',
     name: 'Imie',
     surname: 'Nazwisko',
     birth: 'Data urodzenia',
@@ -69,5 +69,20 @@ export default {
   error: {
     index: 'Prosze uzupełnić poprawnie wszytkie dane',
     user_used: 'Niestety ten login jest już zajęty.',
+    server_error: 'Błąd',
+  },
+  settings: {
+    passwordchange: 'Zmiana hasła',
+    contact: 'Zmiana danych kontaktowych',
+    wrongpass: 'Złe hasło',
+    wrongagainpass: 'Hasła się nie zgadzają',
+    oldpass: 'Stare hasło',
+    newpass: 'Nowe hasło',
+    againnewpass: 'Powtórz nowe hasło',
+    save: 'Zapisz zmiany',
+    deleteacc: 'Usuń konto',
+    deleteing: 'Usuwanie konta',
+    deletedis:
+      'Jeśli chcesz usunąć swoje konto podaj swoje hasło. Po poprawnym podaniu hasła zostaniesz wylogowany a twoje konto usuniete.',
   },
 };

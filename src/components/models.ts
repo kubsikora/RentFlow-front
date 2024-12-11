@@ -75,3 +75,31 @@ export function defaultSignupData(): SignupData {
     },
   };
 }
+
+export class AccountSettings {
+  id: number;
+  email: string;
+  phone: string;
+  passwordold: string;
+  passwordnew: string;
+  delete: boolean;
+
+  constructor(id: number) {
+    this.id = id;
+    this.email = '';
+    this.phone = '';
+    this.passwordold = '';
+    this.passwordnew = '';
+    this.delete = false;
+  }
+}
+
+export class DeleAccount {
+  id: number;
+  password: string;
+
+  constructor(id: number) {
+    this.id = id;
+    this.password = '';
+  }
+}
