@@ -1,164 +1,286 @@
-
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=trending_up" />
   <div class="q-pa-md">
     <div style="max-width: 100%">
-      <q-tabs
-        v-model="tab"
-        align="justify"
-        narrow-indicator
-        class="q-mb-lg"
-      >
-        <q-tab class="text-pink" name="energy" label="Energia" />
-        <q-tab class="text-blue" name="water" label="Woda" />
-        <q-tab class="text-yellow" name="gas" label="Gaz" />
-        <q-tab class="text-orange" name="heat" label="Ciepło" />
+      <!-- Tabs -->
+      <q-tabs v-model="tab" align="justify" narrow-indicator class="q-mb-lg">
+        <q-tab class="text-blue" name="tenant" label="Najemca" />
+        <q-tab class="text-red" name="owner" label="Właściciel" />
       </q-tabs>
 
-      <div class="q-gutter-y-sm">
-
-        <q-tab-panels
-          v-model="tab"
-          animated
-          transition-prev="jump-up"
-          transition-next="jump-down"
-          class="bg-grey text-white text-center"
-        >
-        <q-tab-panel name="energy" class="q-tab2">
-            
-          </q-tab-panel>
-          <q-tab-panel name="water" class="q-tab1">
-
-          </q-tab-panel>
-          <q-tab-panel name="gas" class="q-tab1">
-
-          </q-tab-panel>
-          <q-tab-panel name="heat" class="q-tab1">
-
-          </q-tab-panel>
-
-        </q-tab-panels>
-        <q-tab-panels
-          v-model="tab"
-          animated
-          transition-prev="jump-up"
-          transition-next="jump-down"
-          class="bg-pink text-white text-center"
-        >
-        <q-tab-panel name="energy" class="q-tab2">
-
-</q-tab-panel>
-
-          <q-tab-panel name="water" class="q-tab2">
-            <div class="center-wrapper">
+      <!-- Tab Panels -->
+      <q-tab-panels
+        v-model="tab"
+        animated
+        transition-prev="jump-up"
+        transition-next="jump-down"
+        class="q-gutter-y-sm text-center"
+      >
+        <!-- Tenant Tab -->
+        <q-tab-panel name="tenant">
+          <h5>Statystyki dotyczące zużyć dla obiektu <b>321934 - Katowice, ul. Mariacka 22/4</b></h5>
+          <h6>ENERGIA ELEKTRYCZNA</h6>
+          <div class="q-pa-md example-row-equal-width">
+            <div class="row">
+              <div class="col-5">
+                <Bar
+                  id="my-chart-id"
+                  :options="chartOptions"
+                  :data="chartDataEnergy"
+                />
+              </div>
+              <div class="col-3">
 
 
+                <span class="material-symbols-outlined">
+                trending_up
+                </span><br>
+                Wzrost o 32.34 %
+              </div>
+              <div class="col-3">
+
+                <div class="q-pa-md">
+    <div class="q-gutter-y-md column" style="vertical-align: middle">
+      <q-rating
+        v-model="ratingModelEnergy"
+        size="4em"
+        color="orange"
+        readonly
+      />
+
+    </div>
   </div>
-          </q-tab-panel>
-          <q-tab-panel name="gas" class="q-tab2">
-            <div class="center-wrapper">
+              </div>
+            </div>
+          </div>
 
+
+
+          <h6>ZUŻYCIE WODY</h6>
+          <div class="q-pa-md example-row-equal-width">
+            <div class="row">
+              <div class="col-5">
+                <Bar
+                  id="my-chart-id"
+                  :options="chartOptions"
+                  :data="chartDataWater"
+                />
+              </div>
+              <div class="col-3">
+
+
+                <span class="material-symbols-outlined">
+                trending_up
+                </span><br>
+                SPADEK o 3.12 %
+              </div>
+              <div class="col-3">
+
+                <div class="q-pa-md">
+    <div class="q-gutter-y-md column" style="vertical-align: middle">
+      <q-rating
+        v-model="ratingModelWater"
+        size="4em"
+        color="orange"
+        readonly
+      />
+
+    </div>
   </div>
-          </q-tab-panel>
-          <q-tab-panel name="heat" class="q-tab2">
+              </div>
+            </div>
+          </div>
 
-          </q-tab-panel>
 
-        </q-tab-panels>
+          <h6>ZUŻYCIE GAZU</h6>
+          <div class="q-pa-md example-row-equal-width">
+            <div class="row">
+              <div class="col-5">
+                <Bar
+                  id="my-chart-id"
+                  :options="chartOptions"
+                  :data="chartDataGas"
+                />
+              </div>
+              <div class="col-3">
 
-        <q-tab-panels
-          v-model="tab"
-          animated
-          transition-prev="jump-up"
-          transition-next="jump-down"
-          class="bg-orange text-white text-center"
-        >
-          <q-tab-panel name="energy" class="q-tab3">
-            c5
 
-          </q-tab-panel>
-          <q-tab-panel name="water" class="q-tab3">
-            c4
-          </q-tab-panel>
-          <q-tab-panel name="gas" class="q-tab3">
-            c3
-          </q-tab-panel>
-          <q-tab-panel name="heat" class="q-tab3">
-            <div>statystyki ciepła</div>
-          </q-tab-panel>
+                <span class="material-symbols-outlined">
+                trending_up
+                </span><br>
+                Wzrost o 47.34 %
+              </div>
+              <div class="col-3">
 
-        </q-tab-panels>
+                <div class="q-pa-md">
+    <div class="q-gutter-y-md column" style="vertical-align: middle">
+      <q-rating
+        v-model="ratingModelGas"
+        size="4em"
+        color="orange"
+        readonly
+      />
 
-      </div>
+    </div>
+  </div>
+              </div>
+            </div>
+          </div>
+
+
+          <h6>ENERGIA CIEPLNA</h6>
+          <div class="q-pa-md example-row-equal-width">
+            <div class="row">
+              <div class="col-5">
+                <Bar
+                  id="my-chart-id"
+                  :options="chartOptions"
+                  :data="chartDataHeat"
+                />
+              </div>
+              <div class="col-3">
+
+
+                <span class="material-symbols-outlined">
+                trending_up
+                </span><br>
+                Spadek o 2.34 %
+              </div>
+              <div class="col-3">
+
+                <div class="q-pa-md">
+    <div class="q-gutter-y-md column" style="vertical-align: middle">
+      <q-rating
+        v-model="ratingModelHeat"
+        size="4em"
+        color="orange"
+        readonly
+      />
+
+    </div>
+  </div>
+              </div>
+            </div>
+          </div>
+        </q-tab-panel>
+
+
+        <!-- Owner Tab -->
+        <q-tab-panel name="owner">
+          <h5>Wybierz mieszkanie, które chcesz zobaczyć: </h5>
+          <div>
+            <div class="q-pa-md">
+    <q-btn-dropdown color="primary" label="Lokal">
+      <q-list>
+        <q-item clickable v-close-popup @click="onItemClick">
+          <q-item-section>
+            <q-item-label>Katowice, ul. Mariacka 22/4</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="onItemClick">
+          <q-item-section>
+            <q-item-label>Katowice, ul. Mariacka 22/6</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="onItemClick">
+          <q-item-section>
+            <q-item-label>Katowice, ul. Mariacka 22/8</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
+  </div>
+</div>
+        </q-tab-panel>
+      </q-tab-panels>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { Bar } from 'vue-chartjs';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js';
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 export default {
-  setup () {
+  name: 'StatsPage',
+  components: { Bar },
+  data() {
     return {
-      tab: ref('energy'),
-      model: ref(10),
-      energyReadDate: ref('21.11.2023'),
-      energyState: ref(201023),
-      energyAverageConsumption: ref(245),
-      energyIncrease: ref(24),
-      energyAverageCost: ref(321),
-      date: ref('2024/01/01')
-    }
-  }
-}
-
+      tab: 'tenant', // Default active tab
+      ratingModelEnergy: ref(2),
+      ratingModelWater: ref(5),
+      ratingModelGas: ref(1),
+      ratingModelHeat: ref(5),
+      chartDataEnergy: {
+        labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+        datasets: [{ label: 'Energia', data: [40, 20, 12, 31, 45, 51, 34, 22, 34, 45, 43, 32], backgroundColor: 'purple' }],
+      },
+      chartDataWater: {
+        labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+        datasets: [{ label: 'Woda', data: [40, 20, 12, 31, 45, 51, 34, 22, 34, 45, 43, 32], backgroundColor: 'blue' }],
+      },
+      chartDataGas: {
+        labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+        datasets: [{ label: 'Gaz', data: [40, 20, 12, 31, 45, 51, 34, 22, 34, 45, 43, 32], backgroundColor: 'yellow' }],
+      },
+      chartDataHeat: {
+        labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+        datasets: [{ label: 'Ogrzewanie', data: [40, 20, 12, 31, 45, 51, 34, 22, 34, 45, 43, 32], backgroundColor: 'orange' }],
+      },
+      chartOptions: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+          },
+        },
+      },
+    };
+  },
+};
 </script>
 <style scoped>
-
 .q-tab2 {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.center-wrapper {
+.example-row-equal-width .row {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
-.pole-panel {
-  display: flex;
-  justify-content: space-between;
-  width: 80%; /* Adjust width as needed */
-  height: auto; /* Allows flexibility */
-  box-shadow: 0px 0px 9px -7px rgba(66, 68, 90, 1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  padding: 1px;
-  margin-top: 10px;
+.example-row-equal-width .col-5 {
+  flex: 5;
 }
 
-.panel1, .panel2 {
-  width: 50%; /* Divides space equally */
-  padding: 5px;
-  text-align: center;
-  vertical-align: middle;
-
+.example-row-equal-width .col-3 {
+  flex: 3;
 }
 
-.panel1 {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 16px 0px 0px 16px;
-}
 
-.panel2 {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 0px 16px 16px 0px;
+.material-symbols-outlined {
+  font-size: 90px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 1200,
+  'GRAD' 5,
+  'opsz' 80,
 }
 
 </style>
