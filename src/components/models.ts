@@ -103,3 +103,49 @@ export class DeleAccount {
     this.password = '';
   }
 }
+
+export class FlatData {
+  id: number;
+  place_area: number;
+  rooms: number;
+  city: string;
+  zipcode: string;
+  street: string;
+  house_nr: number;
+  flat_nr: number;
+
+  constructor() {
+    this.id = 0;
+    this.city = '';
+    this.zipcode = '';
+    this.street = '';
+    this.flat_nr = 0;
+    this.rooms = 0;
+    this.place_area = 0;
+    this.house_nr = 0;
+  }
+}
+
+export class Account {
+  id: number;
+  name: string;
+  end_living: string;
+  surname: string;
+  login: string;
+  email: string;
+  tel: string;
+  rooms: number;
+  start_living: string;
+
+  constructor() {
+    this.id = 0;
+    this.rooms = 0;
+    this.name = '';
+    this.surname = '';
+    this.login = '';
+    this.start_living = '';
+    this.tel = '';
+    this.email = '';
+    this.end_living = '';
+  }
+}
