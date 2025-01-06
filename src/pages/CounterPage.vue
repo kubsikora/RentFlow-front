@@ -21,6 +21,7 @@
               <div class="pole-panel">
                 <div class="panel1">
                   <p>Data ostatniego odczytu:</p>
+
                   <h4 style="margin-top: 2cqb">{{ energyReadDate }}</h4>
                 </div>
                 <div class="panel2">
@@ -84,7 +85,7 @@
             <div class="center-wrapper">
               <div class="pole-panel">
                 <div class="panel1">
-                  <p>Data odczytu</p>
+                  <p>Podaj datę odczytu licznika</p>
                   <q-date
                     v-model="date"
                     color="grey"
@@ -94,7 +95,7 @@
                   />
                 </div>
                 <div class="panel2">
-                  <p>Stan licznika</p>
+                  <p>Podaj stan licznika</p>
                   <div class="q-pa-md" style="color: white">
                     <input
                       type="number"
@@ -110,17 +111,27 @@
                       "
                       value="200000"
                     />
+
                   </div>
+
                 </div>
+                <q-btn color="primary" label="Prześlij dane"
+                  style="
+                    border-radius: 0px 16px 16px 0px;
+                    width: 150px;
+                  "
+                />
               </div>
+
             </div>
+
           </q-tab-panel>
 
           <q-tab-panel name="water" class="q-tab2">
             <div class="center-wrapper">
               <div class="pole-panel">
                 <div class="panel1">
-                  <p>Data odczytu</p>
+                  <p>Podaj datę odczytu</p>
                   <q-date
                     v-model="date"
                     color="grey"
@@ -130,7 +141,7 @@
                   />
                 </div>
                 <div class="panel2">
-                  <p>Stan licznika</p>
+                  <p>Podaj stan licznika wody</p>
                   <div class="q-pa-md" style="color: white">
                     <input
                       type="number"
@@ -148,6 +159,12 @@
                     />
                   </div>
                 </div>
+                <q-btn color="primary" label="Prześlij dane"
+                  style="
+                    border-radius: 0px 16px 16px 0px;
+                    width: 150px;
+                  "
+                />
               </div>
             </div>
           </q-tab-panel>
@@ -155,7 +172,7 @@
             <div class="center-wrapper">
               <div class="pole-panel">
                 <div class="panel1">
-                  <p>Data odczytu</p>
+                  <p>Podaj datę odczytu</p>
                   <q-date
                     v-model="date"
                     color="grey"
@@ -165,7 +182,7 @@
                   />
                 </div>
                 <div class="panel2">
-                  <p>Stan licznika</p>
+                  <p>Podaj stan licznika gazu</p>
                   <div class="q-pa-md" style="color: white">
                     <input
                       type="number"
@@ -183,6 +200,12 @@
                     />
                   </div>
                 </div>
+                <q-btn color="primary" label="Prześlij dane"
+                  style="
+                    border-radius: 0px 16px 16px 0px;
+                    width: 150px;
+                  "
+                />
               </div>
             </div>
           </q-tab-panel>
@@ -190,7 +213,7 @@
             <div class="center-wrapper">
               <div class="pole-panel">
                 <div class="panel1">
-                  <p>Data odczytu</p>
+                  <p>Podaj datę odczytu</p>
                   <q-date
                     v-model="date"
                     color="grey"
@@ -200,7 +223,7 @@
                   />
                 </div>
                 <div class="panel2">
-                  <p>Stan licznika</p>
+                  <p>Podaj stan licznika ciepła</p>
                   <div class="q-pa-md" style="color: white">
                     <input
                       type="number"
@@ -218,6 +241,12 @@
                     />
                   </div>
                 </div>
+                <q-btn color="primary" label="Prześlij dane"
+                  style="
+                    border-radius: 0px 16px 16px 0px;
+                    width: 150px;
+                  "
+                />
               </div>
             </div>
           </q-tab-panel>
@@ -374,6 +403,7 @@
               </div>
             </div>
           </q-tab-panel>
+          <span>test</span>
         </q-tab-panels>
       </div>
     </div>
@@ -381,7 +411,39 @@
 </template>
 
 <script>
+//import { api } from 'src/boot/axios';
 import { ref } from 'vue';
+import { api } from 'src/boot/axios';
+
+//ta zmienna powinna przechpwywać id mieszkania, które aktualnie jest przeglądane tj. przypisane do bieżącego użytkownika
+const place_id = 1;
+//const responseCounters = await api.get(`/counters/get/counters/${place_id}`); // Make an API call to the Laravel backend
+
+const responseCounters = async () => {
+  try {
+    const response = await api.get(
+      `/counters/get/counters/${place_id}`
+    );
+
+    if (response.data) {
+      $q.notify({
+        type: 'positive',
+        message: i18n.t('success'),
+      });
+    } else {
+      $q.notify({
+        type: 'negative',
+        message: i18n.t('failed'),
+      });
+    }
+  } catch (error) {
+    console.error('Save data error:', error);
+    $q.notify({
+      type: 'negative',
+      message: i18n.t('error.server_error'),
+    });
+  }
+};
 
 export default {
   setup() {
@@ -394,9 +456,11 @@ export default {
       energyIncrease: ref(24),
       energyAverageCost: ref(321),
       date: ref('2024/01/01'),
+      responseCounters,
     };
   },
 };
+
 </script>
 <style scoped>
 .q-tab2 {
@@ -442,6 +506,6 @@ export default {
 
 .panel2 {
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 0px 16px 16px 0px;
+  border-radius: 0px 0px 0px 0px;
 }
 </style>

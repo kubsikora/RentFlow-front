@@ -15,6 +15,7 @@ export default {
     residents: 'Lokatorzy',
     flats: 'Lokale',
     account: 'Ustawienia Konta',
+    reports: 'Raporty'
   },
   messages: {
     new: 'Nowe wiadomości',
