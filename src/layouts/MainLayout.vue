@@ -118,7 +118,7 @@ const linksList: EssentialLinkProps[] = [
   },
   {
     title: i18n.t('menu.reports'),
-    icon: 'note',
+    icon: 'summarize',
     to: '/reports',
     owner: 2,
   },
