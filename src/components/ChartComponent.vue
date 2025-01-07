@@ -45,7 +45,7 @@ function renderChart() {
 
   // Create a new chart and store the instance
   chartInstance.value = new Chart(ctx, {
-    type: 'bar', // Change to 'line', 'pie', etc., as needed
+    type: 'line', // Change to 'line', 'pie', etc., as needed
     data: {
       labels: props.labels, // Use dynamic labels
       datasets: [

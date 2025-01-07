@@ -72,6 +72,8 @@
 </template>
 
 <script lang="ts">
+//tutaj trzba obrogramować wyciągnięcie z bazy danych odpowiednych elementów i wpisanie ich do pliku
+
   export default {
     methods: {
       createFile(reportType: string) {
@@ -81,7 +83,7 @@
         const blob = new Blob([content], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
 
-        // Create a temporary anchor element to trigger download
+        // element wyzwolenia pobierania
         const a = document.createElement('a');
         a.href = url;
         a.download = fileName;

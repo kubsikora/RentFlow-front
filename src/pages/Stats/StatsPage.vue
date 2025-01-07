@@ -158,7 +158,7 @@
           </div>
         </q-tab-panel>
 
-        <!-- Owner Tab -->
+        <!-- Na podstawie elementów z bazy danych, musimy załadować wszystkie mieszkania właściciela, jeżeli nie jest właścicielem to zablokuj okno -->
         <q-tab-panel name="owner">
           <h5>Wybierz mieszkanie, które chcesz zobaczyć:</h5>
           <div>
@@ -195,6 +195,7 @@
 <script>
 import { ref } from 'vue';
 import { Bar } from 'vue-chartjs';
+
 import {
   Chart as ChartJS,
   Title,
@@ -213,7 +214,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale
 );
-
+// do chartów ładujemy dane z bazy danych dotyczące danego mieszkania
 export default {
   name: 'StatsPage',
   components: { Bar },

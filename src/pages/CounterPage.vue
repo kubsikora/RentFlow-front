@@ -403,65 +403,75 @@
               </div>
             </div>
           </q-tab-panel>
-          <span>test</span>
         </q-tab-panels>
+        <h1>TEST{{ responseCounters }}</h1>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-//import { api } from 'src/boot/axios';
 import { ref } from 'vue';
 import { api } from 'src/boot/axios';
-
-//ta zmienna powinna przechpwywać id mieszkania, które aktualnie jest przeglądane tj. przypisane do bieżącego użytkownika
-const place_id = 1;
-//const responseCounters = await api.get(`/counters/get/counters/${place_id}`); // Make an API call to the Laravel backend
-
-const responseCounters = async () => {
-  try {
-    const response = await api.get(
-      `/counters/get/counters/${place_id}`
-    );
-
-    if (response.data) {
-      $q.notify({
-        type: 'positive',
-        message: i18n.t('success'),
-      });
-    } else {
-      $q.notify({
-        type: 'negative',
-        message: i18n.t('failed'),
-      });
-    }
-  } catch (error) {
-    console.error('Save data error:', error);
-    $q.notify({
-      type: 'negative',
-      message: i18n.t('error.server_error'),
-    });
-  }
-};
-
 export default {
   setup() {
+    //Trzeba pobrać id aktualnie obługiwanego mieszkania
+    const place_id = ref(1);
+    const tab = ref('energy');
+    const model = ref(10);
+    const energyReadDate = ref('21.11.2023');
+    const energyState = ref(201023);
+    const energyAverageConsumption = ref(245);
+    const energyIncrease = ref(24);
+    const energyAverageCost = ref(321);
+    const date = ref('2024/01/01');
+
+    //to powinno nam zwrócić idczyty wszystkich liczników, które musimy rozróżnić na podstawie typu E-energy, W-water, G-gas, H-heat i wpisać do odpowiednych kolumn
+    const responseCounters = async () => {
+      try {
+        const response = await api.get(`/counters/get/counters/${place_id.value}`);
+        if (response.data) {
+          $q.notify({
+            type: 'positive',
+            message: i18n.t('success'),
+          });
+        } else {
+          $q.notify({
+            type: 'negative',
+            message: i18n.t('failed'),
+          });
+        }
+      } catch (error) {
+        console.error('Save data error:', error);
+        $q.notify({
+          type: 'negative',
+          message: i18n.t('error.server_error'),
+        });
+      }
+    };
+
+    const fetchData = () => {
+      responseCounters();
+    };
+
+    // tutaj trzeba dodać funckję która po kliknięciu odpowiedniego przycisku załaduje dany odczyt licznika
+ 
+    fetchData();
+
     return {
-      tab: ref('energy'),
-      model: ref(10),
-      energyReadDate: ref('21.11.2023'),
-      energyState: ref(201023),
-      energyAverageConsumption: ref(245),
-      energyIncrease: ref(24),
-      energyAverageCost: ref(321),
-      date: ref('2024/01/01'),
-      responseCounters,
+      tab,
+      model,
+      energyReadDate,
+      energyState,
+      energyAverageConsumption,
+      energyIncrease,
+      energyAverageCost,
+      date,
     };
   },
 };
-
 </script>
+
 <style scoped>
 .q-tab2 {
   display: flex;
