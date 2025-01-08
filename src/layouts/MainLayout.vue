@@ -105,6 +105,12 @@ const linksList: EssentialLinkProps[] = [
     owner: 2,
   },
   {
+    title: i18n.t('Kalendarz'),
+    icon: 'event',
+    to: 'calendar',
+    owner: 2,
+  },
+  {
     title: i18n.t('menu.stats'),
     icon: 'equalizer',
     to: '/stats',

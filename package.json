@@ -6,7 +6,6 @@
   "author": "kubsikora <kubsikora@gmail.com>",
   "private": true,
   "scripts": {
-    
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
@@ -14,6 +13,10 @@
     "build": "quasar build"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/vue3": "^6.1.15",
     "@quasar/extras": "^1.16.4",
     "@syncfusion/ej2-base": "^27.2.5",
     "@syncfusion/ej2-vue-charts": "^27.2.5",

@@ -37,6 +37,10 @@ const routes: RouteRecordRaw[] = [
         path: '/configuration/account',
         component: () => import('pages/Configuration/AccountPage.vue'),
       },
+      {
+        path: '/calendar',
+        component: () => import('src/pages/Calendar/CalendarTask.vue')
+      }
     ],
   },
   {
