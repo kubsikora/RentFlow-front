@@ -40,7 +40,7 @@
                 </div>
                 <div class="panel2">
                   <p>Wartość ostatniego odczytu</p>
-                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                  <h4 style="margin-top: 20px">{{ energyState }} m3</h4>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="panel2">
                   <p>Wartość ostatniego odczytu</p>
-                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                  <h4 style="margin-top: 20px">{{ energyState }} m3</h4>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="panel2">
                   <p>Wartość ostatniego odczytu</p>
-                  <h4 style="margin-top: 20px">{{ energyState }} kWh</h4>
+                  <h4 style="margin-top: 20px">{{ energyState }} GJ</h4>
                 </div>
               </div>
             </div>
@@ -304,7 +304,7 @@
                   >
                     <div class="ms-3">
                       <p class="mb-2">Średnie zużycie dobowe</p>
-                      <h6>{{ energyAverageConsumption }} kWh</h6>
+                      <h6>{{ energyAverageConsumption }} m3</h6>
                     </div>
                   </div>
                 </div>
@@ -340,7 +340,7 @@
                   >
                     <div class="ms-3">
                       <p class="mb-2">Średnie zużycie dobowe</p>
-                      <h6>{{ energyAverageConsumption }} kWh</h6>
+                      <h6>{{ energyAverageConsumption }} m3</h6>
                     </div>
                   </div>
                 </div>
@@ -376,7 +376,7 @@
                   >
                     <div class="ms-3">
                       <p class="mb-2">Średnie zużycie dobowe</p>
-                      <h6>{{ energyAverageConsumption }} kWh</h6>
+                      <h6>{{ energyAverageConsumption }} GJ</h6>
                     </div>
                   </div>
                 </div>
@@ -404,7 +404,6 @@
             </div>
           </q-tab-panel>
         </q-tab-panels>
-        <h1>TEST{{ responseCounters }}</h1>
       </div>
     </div>
   </div>
@@ -455,7 +454,7 @@ export default {
     };
 
     // tutaj trzeba dodać funckję która po kliknięciu odpowiedniego przycisku załaduje dany odczyt licznika
- 
+
     fetchData();
 
     return {
