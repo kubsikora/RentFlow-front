@@ -27,7 +27,7 @@
       <hr>
       <q-card-section>
         Mieszkanie
-        <q-select v-model="flatschoose" :options="flats" color="primary" inline />
+        <q-select v-model="flatschoose" :options="flatsnames" color="primary" inline />
       </q-card-section>
       <q-card-section>
         Do kogo wysłać wiadomość
@@ -64,6 +64,7 @@ const dialog = ref(false);
 const tresc = ref('');
 const flatschoose = ref('');
 const group = ref('op1');
+const flatsnames: Ref<string[]> = ref(['']);
 const flats: Ref<{ name: string, id: number }[]> = ref([{ name: '', id: 0 }]);
 const id = GetID();
 const owner = CheckIfOwner();
@@ -104,9 +105,10 @@ const add = () => {
 
 const getFlats = () => {
   void api.get(`/get/flats$owner=${owner.value}&id=${id.value}`)
-    .then((res: AxiosResponse<{ odp: { name: string, id: number }[] }>) => {
-      if (res.data.odp.length > 0) {
-        flats.value = res.data.odp;
+    .then((res: AxiosResponse<{ all: { name: string, id: number }[], names: string[] }>) => {
+      if (res.data.all.length > 0) {
+        flats.value = res.data.all;
+        flatsnames.value = res.data.names;
       } else {
         $q.notify({
           type: 'negative',
@@ -117,7 +119,8 @@ const getFlats = () => {
 }
 
 const send = () => {
-  void api.get(`/message/add&messege=${tresc.value}&to=${group.value}&level=${group2.value}`)
+  let wynik = flats.value.find(element => element.name === flatschoose.value) || { id: 0 };
+  void api.get(`/message/add&messege=${tresc.value}&to=${group.value}&level=${group2.value}&idPlace=${wynik.id}$from=${id.value}`)
     .then((res: AxiosResponse<{ odp: number }>) => {
       if (res.data.odp == 1) {
         $q.notify({
