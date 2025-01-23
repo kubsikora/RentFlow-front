@@ -3,21 +3,90 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=trending_up" />
   <q-btn style="color: white; margin-left: 1%" @click="add" class="bg-primary " label="Wyśli nowa wiadomość" />
   <div class="q-pa-md q-gutter-sm">
-    <q-banner class="q-banner" :class="{ 'bg-gray': isGray[0], 'bg-primary text-white': !isGray[0] }">
-      <b>UWAGA!</b> Na dzień 22 Stycznia w godzinach 12:00 do 14:00 zaplanowano wyłączenie prądu. Dziękujemy za
-      wyrozumiałość.
-      <template v-slot:action>
-        <q-btn flat color="white" label="Potwierdź" @click="makeGray(0)" />
-      </template>
-    </q-banner>
-  </div>
-  <div class="q-pa-md q-gutter-sm">
-    <q-banner class="q-banner" :class="{ 'bg-gray': isGray[1], 'bg-primary text-white': !isGray[1] }">
-      W dniu 20.02 w budynku odbędą się kontrole stanu instalacji gazowej. Prosimy o otwieranie drzwi
-      <template v-slot:action>
-        <q-btn flat color="white" label="Potwierdź" @click="makeGray(1)" />
-      </template>
-    </q-banner>
+    <div v-for="mes, index in messageall" :key="index">
+      <q-banner class="q-banner" :class="{ 'bg-gray': isGray[0], 'bg-primary text-white': !isGray[0] }">
+        <!-- {{ mes.content }} -->
+        {{ mes.content }}
+        <br>
+        {{ mes.created_at.substring(0, 10) }}
+        <br>
+        <div v-if="mes.importance_level == 'hi'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white;">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <div v-if="mes.importance_level == 'mid'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: yellow; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: yellow; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <div v-if="mes.importance_level == 'low'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: blue; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <template v-slot:action>
+          <q-btn flat color="white" label="Potwierdź" @click="makeGray(0)" />
+        </template>
+      </q-banner>
+    </div>
+    <div v-for="mes, index in messageresident" :key="index">
+      <q-banner class="q-banner" :class="{ 'bg-gray': isGray[0], 'bg-secondary text-white': !isGray[0] }">
+        <!-- {{ mes.content }} -->
+        {{ mes.content }}
+        <br>
+        {{ mes.created_at.substring(0, 10) }}
+        <br>
+        <div v-if="mes.importance_level == 'hi'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white;">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: red; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <div v-if="mes.importance_level == 'mid'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: yellow; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+            <div
+              style="width: 20px; height: 20px; background-color: yellow; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <div v-if="mes.importance_level == 'low'">
+          <div style="display: flex; margin-top: 10px;">
+            <div
+              style="width: 20px; height: 20px; background-color: blue; margin-left: 5px; border-radius: 8px; border: 1px solid white">
+            </div>
+          </div>
+        </div>
+        <template v-slot:action>
+          <q-btn flat color="white" label="Potwierdź" @click="makeGray(0)" />
+        </template>
+      </q-banner>
+    </div>
   </div>
   <q-dialog v-model="dialog">
     <q-card style="width: 500px">
@@ -59,11 +128,25 @@ import { useI18n } from 'vue-i18n';
 const $q = useQuasar();
 const i18n = useI18n();
 
+interface Message {
+  id: number;
+  from_id: number;
+  to: string;
+  place_id: number;
+  importance_level: string;
+  content: string;
+  deleted_at: null | string;
+  created_at: string;
+  updated_at: string;
+}
+
 const isGray = ref([false, false]);
 const dialog = ref(false);
 const tresc = ref('');
 const flatschoose = ref('');
 const group = ref('op1');
+const messageall: Ref<Message[]> = ref([]);
+const messageresident: Ref<Message[]> = ref([]);
 const flatsnames: Ref<string[]> = ref(['']);
 const flats: Ref<{ name: string, id: number }[]> = ref([{ name: '', id: 0 }]);
 const id = GetID();
@@ -120,13 +203,29 @@ const getFlats = () => {
 
 const send = () => {
   let wynik = flats.value.find(element => element.name === flatschoose.value) || { id: 0 };
-  void api.get(`/message/add&messege=${tresc.value}&to=${group.value}&level=${group2.value}&idPlace=${wynik.id}$from=${id.value}`)
-    .then((res: AxiosResponse<{ odp: number }>) => {
-      if (res.data.odp == 1) {
+  void api.get(`/message/add/messege=${tresc.value}&to=${group.value}&level=${group2.value}&idPlace=${wynik.id}&from=${id.value}`)
+    .then((res: AxiosResponse<number>) => {
+      if (res.data == 1) {
+        dialog.value = false;
+        get();
         $q.notify({
           type: 'positive',
           message: i18n.t('success'),
         });
+      } else {
+        $q.notify({
+          type: 'negative',
+          message: i18n.t('failed'),
+        });
+      }
+    })
+};
+const get = () => {
+  void api.get(`/message/get/id=${id.value}&owner=${owner.value}`)
+    .then((res: AxiosResponse<[Message[], Message[]]>) => {
+      if (res.data.length > 0) {
+        messageall.value = res.data[0];
+        messageresident.value = res.data[1];
       } else {
         $q.notify({
           type: 'negative',
@@ -142,6 +241,7 @@ const makeGray = (index: number) => {
 
 onMounted(() => {
   getFlats();
+  get();
 })
 
 </script>
